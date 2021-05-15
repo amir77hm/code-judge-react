@@ -1,0 +1,85 @@
+.facilities {
+  .Needless {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    color: #333;
+  }
+
+  .items {
+    margin: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-large) {
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+    @media only screen and (max-width: $bp-small) {
+      justify-content: center;
+      margin: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      width: 25rem;
+      text-align: center;
+      padding: 2.5rem 0;
+      border-radius: 1rem;
+
+      @media only screen and (max-width: $bp-small) {
+        margin: 1rem;
+      }
+
+      &:hover {
+        box-shadow: var(--shadow-light);
+      }
+
+      &__img {
+        img {
+          width: 100%;
+        }
+      }
+      &__text {
+        font-size: 1.4rem;
+        margin-top: 3rem;
+        color: #333;
+
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn-catalog,
+    .btn-more {
+      font-size: 1.3rem;
+      width: 12rem;
+      height: 3.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-catalog {
+      border: 3px solid var(--color-secondary);
+      color: var(--color-secondary);
+      margin-right: 1rem;
+      font-weight: 600;
+    }
+
+    .btn-more {
+      background-color: var(--color-secondary);
+      color: #fff;
+      margin-left: 1rem;
+    }
+  }
+}

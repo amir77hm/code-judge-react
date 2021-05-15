@@ -1,0 +1,339 @@
+.footer {
+  margin-top: 10rem;
+
+  .email-box {
+    text-align: center;
+    z-index: 4;
+
+    form {
+      background-color: #fff;
+      display: inline-block;
+      text-align: center;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0.4rem 1rem rgba($color: #000000, $alpha: 0.2);
+
+      .email {
+        position: relative;
+      }
+
+      label {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      .inputEmail {
+        outline: none;
+        border: 1px solid var(--color-secondary);
+        border-radius: 0.5rem;
+        padding: 0.9rem;
+        padding-left: 8.5rem;
+        width: 38rem;
+        height: 4.2rem;
+        display: block;
+        box-shadow: 0 0.4rem 1rem rgba($color: #000000, $alpha: 0.2);
+
+        &::placeholder {
+          text-align: right;
+          font-size: 1.4rem;
+          font-family: "IranSans";
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .submitBtn {
+        border: none;
+        outline: none;
+        background-color: var(--color-secondary);
+        color: #fff;
+        padding: 0.6rem 2.4rem;
+        position: absolute;
+        top: 50%;
+        left: 0.7rem;
+        transform: translateY(-50%);
+        cursor: pointer;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .content-box {
+    text-align: center;
+    background-image: radial-gradient(
+        circle at 5% 80%,
+        #fc80f7 10rem,
+        transparent 30rem
+      ),
+      radial-gradient(circle at 70% 10%, #ee7bf9 0, transparent 14%),
+      radial-gradient(circle at 85% 14%, #fc7e66 0, transparent 18%),
+      linear-gradient(to right, #d9d9d9, #865dfb);
+    border-radius: 3rem;
+    padding: 8rem 7rem 2rem 7rem;
+    margin-top: -6rem;
+    position: relative;
+    z-index: -1;
+
+    @media only screen and (max-width: $bp-large) {
+      padding: 8rem 4rem 2rem 4rem;
+    }
+    @media only screen and (max-width: $bp-medium) {
+      clip-path: polygon(0% 0%, 50% 0%, 50% 5%, 100% 5%, 100% 100%, 0% 100%);
+      margin-top: -7rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: -2rem;
+        top: 3rem;
+
+        width: 50%;
+        height: 50%;
+        z-index: -2;
+        border-top-right-radius: 5rem;
+        border-top: 2rem solid #fff;
+        border-right: 2rem solid #fff;
+      }
+    }
+
+    .grid-system {
+      display: grid;
+      grid-template-areas:
+        "logos Helpful-links codejudge-links codejudge-logo"
+        "social phones phones addresses";
+
+      grid-gap: 2rem;
+      text-align: right;
+      grid-row-gap: 5rem;
+      justify-items: center;
+
+      @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+          "logos codejudge-logo codejudge-logo codejudge-logo"
+          "logos Helpful-links Helpful-links codejudge-links"
+          " phones phones addresses addresses"
+          "social social social social";
+      }
+    }
+
+    .logos {
+      grid-area: logos;
+      display: flex;
+      text-align: left;
+      justify-content: space-between;
+      margin-left: -3rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+        justify-content: end;
+      }
+
+      .img {
+        width: 30%;
+        position: relative;
+
+        @media only screen and (max-width: $bp-medium) {
+          width: 80%;
+        }
+        @media only screen and (max-width: $bp-Xsmallest) {
+          width: 100%;
+        }
+
+        .iran {
+          margin-top: -2rem;
+
+          @media only screen and (max-width: $bp-medium) {
+            margin-top: 0;
+          }
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .Helpful-links {
+      grid-area: Helpful-links;
+
+      &__items {
+      }
+
+      &__item {
+        margin: 1rem 0;
+        padding: 0.3rem;
+
+        &.Header {
+          .Helpful-links__link {
+            color: #000;
+            font-weight: 600;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-left: 5rem;
+            padding-bottom: 0.7rem;
+          }
+        }
+      }
+
+      &__link {
+        color: #444;
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+    }
+
+    .codejudge-links {
+      grid-area: codejudge-links;
+
+      &__items {
+      }
+
+      &__item {
+        margin: 1rem 0;
+        padding: 0.3rem;
+        &.Header {
+          .codejudge-links__link {
+            color: #000;
+            font-weight: 600;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-left: 5rem;
+            padding-bottom: 0.7rem;
+          }
+        }
+      }
+
+      &__link {
+        color: #444;
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+    }
+
+    .codejudge-logo {
+      grid-area: codejudge-logo;
+      width: 100%;
+
+      @media only screen and (max-width: $bp-medium) {
+        justify-self: right;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      p:last-child {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 1.6;
+        color: #444;
+      }
+    }
+
+    .social {
+      grid-area: social;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-top: 4rem;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 0.6rem;
+      }
+
+      &__logos {
+        img {
+          width: 2rem;
+          margin: 0.4rem;
+        }
+      }
+    }
+
+    .phones {
+      grid-area: phones;
+
+      .title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+
+        i {
+          border-radius: 50%;
+          padding: 0.5rem;
+          background-color: #fff;
+          color: #333;
+          width: 2rem;
+          height: 2rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 1px;
+          font-size: 1.2rem;
+        }
+      }
+
+      .phone {
+        font-size: 1.7rem;
+        color: #444;
+
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .addresses {
+      grid-area: addresses;
+      width: 100%;
+
+      .title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+
+        i {
+          border-radius: 50%;
+          padding: 0.5rem;
+          background-color: #fff;
+          color: #333;
+          width: 2rem;
+          height: 2rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 1px;
+          font-size: 1.2rem;
+        }
+      }
+
+      .address {
+        font-size: 1.7rem;
+        color: #444;
+
+        @media only screen and (max-width: $bp-large) {
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .copyRight {
+      text-align: center;
+      margin-top: 4rem;
+
+      span {
+        display: inline-block;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1.3rem;
+        color: #444;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@media only screen and (max-width: $bp-mediumest) {
+  .navigation {
+    .toggle-nav {
+      display: block;
+      cursor: pointer;
+
+      &__icon {
+        position: relative;
+        width: 30px;
+        height: 5px;
+        background-color: var(--color-primary);
+        border-radius: 3px;
+        vertical-align: center;
+
+        &::before,
+        &::after {
+          position: absolute;
+          content: "";
+          width: 30px;
+          height: 5px;
+          background-color: var(--color-primary);
+          border-radius: 3px;
+          left: 7px;
+        }
+
+        &::before {
+          top: -10px;
+        }
+
+        &::after {
+          top: 10px;
+        }
+      }
+
+      #toggler {
+        display: none;
+      }
+    }
+  }
+}

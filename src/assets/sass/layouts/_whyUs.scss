@@ -1,0 +1,126 @@
+.whyUs {
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+
+    @media only screen and (max-width: $bp-mediumest) {
+      margin-top: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+    }
+  }
+
+  .left-list {
+    .items {
+      text-align: right;
+
+      @media only screen and (max-width: $bp-small) {
+        margin-right: 5.5rem !important;
+      }
+
+      .item {
+        position: relative;
+        padding-right: 2rem;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 1rem;
+          height: 1rem;
+          background-color: var(--color-secondary);
+          transform: translateY(-50%);
+          border-radius: 3px;
+        }
+
+        &:first-child::after {
+          background-color: var(--color-primary);
+        }
+        &:last-child::after {
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  .right-list {
+    .items {
+      text-align: left;
+
+      @media only screen and (max-width: $bp-small) {
+        text-align: right;
+        margin-top: -1rem !important;
+      }
+
+      .item {
+        padding-left: 2rem;
+
+        @media only screen and (max-width: $bp-small) {
+          padding-right: 2rem;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 1rem;
+          height: 1rem;
+          background-color: var(--color-secondary);
+          transform: translateY(-50%);
+          border-radius: 3px;
+
+          @media only screen and (max-width: $bp-small) {
+            right: 0 !important;
+            left: auto;
+          }
+        }
+
+        &:first-child::before {
+          background-color: var(--color-primary);
+        }
+        &:last-child::before {
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  ul {
+    li {
+      position: relative;
+      font-size: 1.5rem;
+      line-height: 3;
+      margin: 1rem 0;
+
+      @media only screen and (max-width: $bp-large) {
+        font-size: 1.4rem;
+      }
+      @media only screen and (max-width: $bp-mediumest) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .center-image {
+    text-align: center;
+    width: 38rem;
+    padding: 0 3rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 28rem;
+    }
+    @media only screen and (max-width: $bp-small) {
+      order: -1;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
