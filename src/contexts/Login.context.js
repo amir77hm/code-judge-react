@@ -36,7 +36,15 @@ export function LoginProvider(props) {
     }
 
     return (
-        <LoginContext.Provider value={{ name, spinner, isUserLoggedIn, email, password, rememberMe, changeState }}>
+        <LoginContext.Provider value={{
+            name,
+            spinner,
+            isUserLoggedIn,
+            email,
+            password,
+            rememberMe,
+            changeState
+        }}>
             {props.children}
         </LoginContext.Provider>
     )

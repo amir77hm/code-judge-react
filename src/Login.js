@@ -4,33 +4,10 @@ import icon from './assets/img/locksmith.png'
 import { CSSTransition } from 'react-transition-group'
 import { LoginContext } from "./contexts/Login.context";
 import Spinner from "./Spinner";
+import { useForm } from 'react-hook-form'
+
 
 const useStyles = makeStyles((theme) => ({
-    // '@global': {
-    //     ".item-enter": {
-    //         opacity: '0',
-    //     },
-    //     '.item-enter-active': {
-    //         opacity: '1',
-    //         transition: 'opacity 500ms ease-in',
-    //     },
-    //     '.item-exit': {
-    //         opacity: '1',
-    //     },
-    //     '.item-exit-active': {
-    //         opacity: '0',
-    //         transition: 'opacity 500ms ease-in',
-    //     },
-    // },
-    // form: {
-    //     minWidth: '35rem',
-    //     backgroundColor: 'white',
-    //     padding: '2rem',
-    //     maxHeight: 'auto',
-    //     borderRadius: '6px',
-    //     position: 'relative',
-    //     transition: 'opacity 500ms ease-in-out',
-    // },
     sinUp: {
         cursor: 'pointer',
         fontSize: '1.2rem',
@@ -47,81 +24,100 @@ export default function Login(props) {
     const classes = useStyles();
     const { name, spinner, email, password, rememberMe, changeState } = useContext(LoginContext)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const { register, handleSubmit, formState: { errors }, trigger } = useForm({
+        defaultValues: {
+            name: name,
+            email: email,
+            password: password
+        }
+    }
+    )
+
+    const onSubmit = (data) => {
         changeState('spinner')
-        changeState('logged')
+        changeState('email', data.email)
+        changeState('password', data.password)
+        changeState('name', data.name)
         setTimeout(() => {
+            changeState('logged')
             changeState('spinner')
             props.history.push('/')
         }, 1000)
     }
 
-    // console.log([name, email])
-
     if (spinner) return <div className='login'><Spinner /></div>
     return (
         <div className='login'>
-            <CSSTransition
-                timeout={300}
-                classNames="form"
-                in={props.match != null}
-            >
-                <form
-                    className='form'
-                    onSubmit={(e) => handleSubmit(e)}>
-                    <div
-                        className='close'
-                        onClick={() => props.history.push('/')}
+            <form
+                className='form'
+                onSubmit={handleSubmit(onSubmit)}>
+                <div
+                    className='close'
+                    onClick={() => props.history.push('/')}
+                />
+                <div className='icon-login'>
+                    <img src={icon} alt='icon' />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email1">ایمیل</label>
+                    <input
+                        {...register('email', {
+                            required: 'email is required',
+                            pattern: {
+                                value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                message: 'invalid email'
+                            }
+                        })}
+                        className={`form-control ${errors.email ? 'invalid' : null}`}
+                        id="email1"
+                        onKeyUp={() => trigger('email')}
                     />
-                    <div className='icon-login'>
-                        <img src={icon} alt='icon' />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email1">ایمیل</label>
+                    {errors.email && <div className='input-error'>{errors.email.message}</div>}
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">پسورد</label>
+                    <input
+                        {...register('password', {
+                            required: 'password is required',
+                            minLength: {
+                                value: 4,
+                                message: 'weak password'
+                            }
+                        })}
+                        type="password"
+                        className={`form-control ${errors.password ? 'invalid' : null}`}
+                        id="password"
+                        onKeyUp={() => trigger('password')}
+                    />
+                    {errors.password && <div className='input-error'>{errors.password.message}</div>}
+                </div>
+                <div className="form-group">
+                    <label htmlFor="name">نام شما</label>
+                    <input
+                        {...register('name', {
+                            required: 'name is required',
+                        })}
+                        type="text"
+                        className={`form-control ${errors.name ? 'invalid' : null}`}
+                        id="name"
+                        onKeyUp={() => trigger('name')}
+                    />
+                    {errors.name && <div className='input-error'>{errors.name.message}</div>}
+                </div>
+                <div className="checkbox" >
+                    <label>
                         <input
-                            type="email"
-                            className="form-control"
-                            id="email1"
-                            value={email}
-                            onChange={(e) => changeState('email', e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="pwd">پسورد</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="pwd"
-                            value={password}
-                            onChange={(e) => changeState('password', e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name">نام شما</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            value={name}
-                            onChange={(e) => changeState('name', e.target.value)}
-                        />
-                    </div>
-                    <div className="checkbox" >
-                        <label>
-                            <input
-                                type="checkbox"
-                                value={rememberMe}
-                                onClick={(e) => changeState('rememberMe')}
-                            /> مرا به یادآور</label>
-                    </div>
-                    <button type='submit' className="btnLogin">ورود</button>
-                    <div
-                        className={classes.sinUp}
-                        onClick={() => props.history.push('/signUp')}
-                    ><p>عضو نیستی؟ ثبت نام کن</p></div>
-                </form>
-            </CSSTransition>
+                            type="checkbox"
+                            value={rememberMe}
+                            onClick={(e) => changeState('rememberMe')}
+                        /> مرا به یادآور</label>
+                </div>
+                <button type='submit' className="btnLogin">ورود</button>
+                <div
+                    className={classes.sinUp}
+                    onClick={() => props.history.push('/signUp')}
+                ><p>عضو نیستی؟ ثبت نام کن</p></div>
+            </form>
         </div >
     );
 }

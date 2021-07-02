@@ -1,5 +1,4 @@
 import { Route } from 'react-router-dom'
-import './assets/sass/main.scss'
 import Header from './Header'
 import Facilities from "./Facilities";
 import Customers from "./Customers";
@@ -13,40 +12,37 @@ import SignUp2 from './SignUp2'
 import SignUp3 from './SignUp3'
 import { LoginProvider } from "./contexts/Login.context";
 import { SignUpProvider } from './contexts/SignUp.context'
+import './assets/sass/main.scss'
 
 
 function App() {
 
   return (
-    <>
-      <Route path='/' render={routeProps =>
-        <>
-          <LoginProvider>
+    <LoginProvider>
+      <SignUpProvider>
+        <Route path='/' render={routeProps =>
+          <>
             <Header {...routeProps} />
-          </LoginProvider>
-          <Facilities />
-          <Customers />
-          <Steps />
-          <WhyUs />
-          <BeOurClient />
-          <Footer />
-        </>
-      } />
-
-      <Route path='/login' render={(routeProps) =>
-        <LoginProvider>
+            <Facilities />
+            <Customers />
+            <Steps />
+            <WhyUs />
+            <BeOurClient />
+            <Footer />
+          </>
+        } />
+        <Route path='/login' render={(routeProps) =>
           <Login {...routeProps} />
-        </LoginProvider>
-      } />
-
-      <Route path='/SignUp' render={(routeProps) =>
-        <SignUpProvider>
-          <SignUp1 {...routeProps} />
-          <SignUp2 {...routeProps} />
-          <SignUp3 {...routeProps} />
-        </SignUpProvider>
-      } />
-    </>
+        } />
+        <Route path='/SignUp' render={(routeProps) =>
+          <>
+            <SignUp1 {...routeProps} />
+            <SignUp2 {...routeProps} />
+            <SignUp3 {...routeProps} />
+          </>
+        } />
+      </SignUpProvider>
+    </LoginProvider>
   );
 }
 

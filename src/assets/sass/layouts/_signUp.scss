@@ -67,9 +67,9 @@
 
   .form-group {
     width: 100%;
-    border-bottom: 1px solid #ccc;
     padding: 1rem 0;
     margin-top: 1rem;
+    height: 7rem;
 
     label {
       font-size: 1.6rem;
@@ -89,6 +89,14 @@
       &:focus {
         border: 1px solid black;
       }
+    }
+    .input-error {
+      color: red;
+      float: left;
+      font-size: 1.2rem;
+    }
+    .invalid {
+      border-color: red !important;
     }
   }
   .icon-login {

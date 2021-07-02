@@ -1,14 +1,9 @@
 import React, { useContext } from 'react'
 import Navbar from './Navbar'
-import { LoginContext } from "./contexts/Login.context";
-import { SignUpContext } from './contexts/SignUp.context'
 import Illustration from "./assets/img/Illustration.png"
 
 export default function Header(props) {
 
-    // const { name, isUserLoggedIn, email, changeState } = useContext(LoginContext)
-    // const { family } = useContext(SignUpContext)
-    // console.log([family])
 
     return (
         <header className="header">
