@@ -8,15 +8,15 @@ const styles = {
         },
         '.page-enter-active': {
             opacity: '1',
-            transition: 'opacity 500ms ease-in',
+            transition: 'opacity 300ms',
         },
         '.page-exit': {
             opacity: '1',
         },
-        // '.page-exit-active': {
-        //     opacity: '0',
-        //     transition: 'opacity 500ms ease-in',
-        // },
+        '.page-exit-active': {
+            opacity: '0',
+            transition: 'opacity 300ms',
+        },
     },
     page: {
         width: "100vw",
@@ -33,8 +33,6 @@ const styles = {
         alignItems: 'center',
         transition: 'opacity 5000ms ease-in-out',
     },
-    // page: {
-    // }
 }
 
 function Page({ children, classes }) {

@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import logo from './assets/img/logo-header.png'
 import { LoginContext } from "./contexts/Login.context";
 
-
 export default function Navbar(props) {
     const { name, isUserLoggedIn } = useContext(LoginContext)
     let newName;
@@ -11,7 +10,6 @@ export default function Navbar(props) {
     } else {
         newName = `${name}`
     }
-
 
     return (
         <nav className="navigation">
@@ -25,6 +23,10 @@ export default function Navbar(props) {
                         onClick={() => {
                             if (isUserLoggedIn) return;
                             props.history.push('/login')
+                            window.scrollTo({
+                                top: 400,
+                                behavior: 'smooth',
+                            })
                         }}
                         className="btn btn-hover btn-hover__white"
                         style={{ direction: 'rtl' }}

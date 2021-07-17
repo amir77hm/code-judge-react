@@ -12,21 +12,6 @@
   z-index: 10;
   direction: rtl;
 
-  .form-enter {
-    opacity: 0;
-  }
-  .form-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-  .form-exit {
-    opacity: 1;
-  }
-  .form-exit-active {
-    opacity: 0;
-    transition: opacity 200ms;
-  }
-
   .btns {
     margin-top: 2rem;
     display: flex;

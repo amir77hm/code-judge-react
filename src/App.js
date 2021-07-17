@@ -1,4 +1,5 @@
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Header from './Header'
 import Facilities from "./Facilities";
 import Customers from "./Customers";
@@ -14,33 +15,43 @@ import { LoginProvider } from "./contexts/Login.context";
 import { SignUpProvider } from './contexts/SignUp.context'
 import './assets/sass/main.scss'
 
-
 function App() {
 
   return (
     <LoginProvider>
       <SignUpProvider>
-        <Route path='/' render={routeProps =>
+        <Route render={({ location, history }) => (
           <>
-            <Header {...routeProps} />
+            <Header history={history} />
             <Facilities />
             <Customers />
             <Steps />
             <WhyUs />
             <BeOurClient />
             <Footer />
+
+            <TransitionGroup>
+              <CSSTransition
+                key={location.key}
+                classNames='page'
+                timeout={2000}
+              >
+                <Switch location={location}>
+                  <Route path='/login' render={(routeProps) =>
+                    <Login {...routeProps} />
+                  } />
+                  <Route path='/SignUp' render={(routeProps) =>
+                    <>
+                      <SignUp1 {...routeProps} />
+                      <SignUp2 {...routeProps} />
+                      <SignUp3 {...routeProps} />
+                    </>
+                  } />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
           </>
-        } />
-        <Route path='/login' render={(routeProps) =>
-          <Login {...routeProps} />
-        } />
-        <Route path='/SignUp' render={(routeProps) =>
-          <>
-            <SignUp1 {...routeProps} />
-            <SignUp2 {...routeProps} />
-            <SignUp3 {...routeProps} />
-          </>
-        } />
+        )} />
       </SignUpProvider>
     </LoginProvider>
   );

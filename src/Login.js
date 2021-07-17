@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import icon from './assets/img/locksmith.png'
-import { CSSTransition } from 'react-transition-group'
 import { LoginContext } from "./contexts/Login.context";
 import Spinner from "./Spinner";
 import { useForm } from 'react-hook-form'

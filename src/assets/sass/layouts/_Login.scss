@@ -5,6 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   overflow: hidden;
   z-index: 10;
   direction: rtl;
@@ -20,21 +21,6 @@
     border-radius: 6px;
     position: relative;
     transition: opacity 500ms ease-in-out;
-  }
-
-  .form-enter {
-    opacity: 0;
-  }
-  .form-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-  .form-exit {
-    opacity: 1;
-  }
-  .form-exit-active {
-    opacity: 0;
-    transition: opacity 200ms;
   }
 
   .btnLogin {
