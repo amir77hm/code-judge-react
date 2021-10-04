@@ -34,7 +34,7 @@ function App() {
               <CSSTransition
                 key={location.key}
                 classNames='page'
-                timeout={2000}
+                timeout={500}
               >
                 <Switch location={location}>
                   <Route path='/login' render={(routeProps) =>
